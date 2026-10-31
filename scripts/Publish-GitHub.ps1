@@ -100,7 +100,7 @@ if ($remotes -contains 'origin') {
     Assert-Exit 'Read existing origin'
 }
 if (-not $origin) {
-    & gh repo view $repo --json nameWithOwner --jq .nameWithOwner *> $null
+    cmd.exe /c "gh repo view $repo --json nameWithOwner --jq .nameWithOwner >nul 2>&1"
     if ($LASTEXITCODE -eq 0) { throw "Repository $repo exists but no matching origin is configured. Refusing to overwrite it automatically." }
     Write-Host 'Creating repository and pushing source...'
     & gh repo create $repo "--$Visibility" --description 'Cross-browser ChatGPT conversation history token counter' --source . --remote origin --push
@@ -113,7 +113,7 @@ if (-not $origin) {
 }
 
 # Create the release with 3 assets, or safely update assets of an existing release.
-& gh release view $Tag -R $repo --json tagName --jq .tagName *> $null
+cmd.exe /c "gh release view $Tag -R $repo --json tagName --jq .tagName >nul 2>&1"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Release $Tag already exists; refreshing the three downloadable assets..."
     & gh release upload $Tag @assets --clobber -R $repo
