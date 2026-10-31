@@ -1,0 +1,41 @@
+# Credentials and environment
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.token
+*credentials*
+*session*.json
+*cookie*.json
+
+# Local build and user data
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.DS_Store
+Thumbs.db
+*.log
+*.har
+*.zip
+*.7z
+*.tar
+*.gz
+*.bak
+*.tmp
+*.swp
+*.local.json
+
+# Python / IDE artifacts
+__pycache__/
+.pytest_cache/
+.vscode/
+.idea/
+
+# Private conversation exports (do not commit)
+Pasted text*
+chat-export*
+conversation-export*

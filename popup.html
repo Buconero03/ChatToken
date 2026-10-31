@@ -1,0 +1,28 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Context Guardian</title><link rel="stylesheet" href="popup.css"></head>
+<body><main class="dashboard" aria-label="Contatore automatico di token">
+ <header><div class="brandmark"><img src="icons/icon48.png" alt="" width="37" height="37"></div><div class="brand"><b>Context Guardian</b><small>Token della cronologia · automatico</small></div><span class="version">v1.2.1</span></header>
+ <section class="hero"><div class="metric-header"><span>Token del testo recuperato</span><strong id="state" data-kind="loading">Lettura</strong></div>
+ <div id="total" class="big" aria-live="polite">—</div><small class="codec">Codifica <b>o200k_base</b> · conteggio BPE locale</small>
+ <div class="split"><div><span>Tuoi messaggi</span><b id="userTokens">—</b></div><div><span>Risposte ChatGPT</span><b id="assistantTokens">—</b></div></div></section>
+ <section class="threshold" id="thresholdBox" hidden>
+  <div class="threshold-head"><b>Soglia operativa: 250.000 token</b><strong id="thresholdState">—</strong></div>
+  <div class="threshold-track"><span id="thresholdFill"></span></div>
+  <p id="thresholdText">Conteggio in corso</p>
+  <small>Si confronta la cronologia, non la finestra di contesto reale.</small>
+  <button id="pdfCopy" class="secondary" type="button" hidden>Copia richiesta PDF del progetto</button><small id="pdfStatus" aria-live="polite"></small>
+ </section>
+ <section class="summary"><h2>Dettagli del conteggio</h2>
+ <div class="line"><span>Messaggi analizzati</span><strong id="messageCount">—</strong></div>
+ <div class="line"><span>Pagine recuperate</span><strong id="pageCount">—</strong></div>
+ <div class="line"><span>Modello rilevato</span><strong id="model">—</strong></div>
+ <p>Non viene applicato alcun limite per modello: il contatore legge tutti i messaggi testuali accessibili.</p></section>
+ <section class="run" id="runBox"><span class="dot" id="stateDot"></span><div><b id="runTitle">Lettura in corso</b><p id="detail" aria-live="polite">Caricamento dei messaggi…</p><small id="coverage">—</small></div></section>
+ <button id="refresh" class="primary" type="button">↻ Aggiorna conteggio</button>
+ <details class="diagnostics"><summary>Diagnostica della lettura</summary>
+ <div class="line"><span>Ramo della conversazione</span><strong id="branch">—</strong></div>
+ <div class="line"><span>Segnali di troncamento</span><strong id="truncation">—</strong></div>
+ <p>Questi controlli descrivono soltanto i dati osservabili nella cronologia. Non misurano la saturazione del contesto.</p></details>
+ <button id="settingsToggle" class="more" type="button" aria-controls="settings" aria-expanded="false">Impostazioni <span>⌄</span></button>
+ <section id="settings" hidden><label><span>Attiva il monitoraggio automatico</span><input id="enabled" type="checkbox"></label><label><span>Recupera le pagine precedenti</span><input id="deep" type="checkbox"></label><label><span>Mostra mini-indicatore nella chat</span><input id="widgetVisible" type="checkbox"></label><p>Per la cronologia completa vengono utilizzate API interne non ufficiali di chatgpt.com. Il testo viene tokenizzato localmente.</p><button type="button" id="save">Salva</button><small id="saved"></small></section>
+ <footer>Conteggio storico testuale ≠ contesto attivo o consumo cumulativo delle richieste.</footer>
+ </main><script src="alert-policy.js"></script><script src="popup.js"></script></body></html>
